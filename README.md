@@ -13,6 +13,6 @@ This is the template plugin for newgen Earthhack
 ## How to use:
 - Clone this repository
 - Load the gradle project
-- Run `gradle build` to build the plugin
+- Run `gradle build` to build the plugin (use Java 17)
 - Copy the jar file from `build/libs` to the `plugins` folder of Earthhack
 - Start Earthhack
