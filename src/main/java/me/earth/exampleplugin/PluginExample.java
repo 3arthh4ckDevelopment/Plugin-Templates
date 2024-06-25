@@ -3,6 +3,7 @@ package me.earth.exampleplugin;
 import me.earth.earthhack.api.plugin.Plugin;
 import me.earth.earthhack.api.register.exception.AlreadyRegisteredException;
 import me.earth.earthhack.impl.managers.Managers;
+import me.earth.exampleplugin.module.ExampleModule;
 import net.minecraft.client.MinecraftClient;
 
 // The main class of the plugin
