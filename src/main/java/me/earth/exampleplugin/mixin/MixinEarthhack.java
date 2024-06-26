@@ -15,5 +15,4 @@ public class MixinEarthhack {
     {
         System.out.println("Mixin in the Earthhack class!");
     }
-
 }

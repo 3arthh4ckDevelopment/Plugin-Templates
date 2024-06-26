@@ -10,13 +10,18 @@ import net.minecraft.client.MinecraftClient;
 @SuppressWarnings("unused")
 public class PluginExample implements Plugin {
 
+    // This is always at the start of the game
     @Override
     public void load() {
         System.out.println("Hello from the ExamplePlugin!");
 
         // Accessing a private field from the Minecraft class using the AccessWidener
         System.out.println("Start time: " + MinecraftClient.getInstance().startTime);
+    }
 
+    // This could be loaded at any time
+    @Override
+    public void loadRuntime() {
         try {
             // Registering a module
             Managers.MODULES.register(new ExampleModule());
