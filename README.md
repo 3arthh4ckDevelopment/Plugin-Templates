@@ -1,18 +1,8 @@
-# Earthhack Template Plugin (1.13+)
+# Plugin Generator
 
-This is the template plugin for newgen Earthhack
+A plugin generator for Earthhack plugins with a simple UI.
 
-## Examples:
-- Mixins (injecting into Earthhack's initialization method and MinecraftClient's constructor)
-- A simple module
-- Listeners, both a LambdaListener and a regular ModuleListener
-- 3D and 2D rendering examples
-- Simple HUD element
-- A simple command
-
-## How to use:
-- Clone this repository
-- Load the gradle project
-- Run `gradle build` to build the plugin (use Java 17)
-- Copy the jar file from `build/libs` to the `plugins` folder of Earthhack
-- Start Earthhack
+## TODO:
+- [ ] Add 1.12.2 option
+- [ ] Rework the code a bit
+- [ ] Change the UI style

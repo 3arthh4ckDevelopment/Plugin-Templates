@@ -13,6 +13,9 @@ out
 *.iml
 .idea
 
+# VSCode
+.vscode
+
 # gradle
 build
 .gradle
@@ -22,11 +25,3 @@ build
 eclipse
 run
 *.bak
-
-# Files from Forge MDK
-forge*changelog.txt
-
-# version files
-/HeadlessMC/
-/logs/
-/plugins/
