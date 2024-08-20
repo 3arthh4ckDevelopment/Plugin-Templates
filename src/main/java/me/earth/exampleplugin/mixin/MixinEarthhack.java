@@ -9,9 +9,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = Earthhack.class, remap = false)
 public class MixinEarthhack {
 
-    // Mixin to the onInitializeClient method of the Earthhack class
-    @Inject(method = "onInitializeClient", at = @At("HEAD"))
-    private void initHook(CallbackInfo info)
+    // Mixin to the init method of the Earthhack class
+    @Inject(method = "init", at = @At("HEAD"))
+    private static void initHook(CallbackInfo info)
     {
         System.out.println("Mixin in the Earthhack class!");
     }

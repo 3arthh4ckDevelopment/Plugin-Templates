@@ -4,7 +4,6 @@ import me.earth.earthhack.api.plugin.Plugin;
 import me.earth.earthhack.api.register.exception.AlreadyRegisteredException;
 import me.earth.earthhack.impl.managers.Managers;
 import me.earth.exampleplugin.module.ExampleModule;
-import net.minecraft.client.MinecraftClient;
 
 // The main class of the plugin
 @SuppressWarnings("unused")
@@ -14,9 +13,6 @@ public class ExamplePlugin implements Plugin {
     @Override
     public void load() {
         System.out.println("Hello from the ExamplePlugin!");
-
-        // Accessing a private field from the Minecraft class using the AccessWidener
-        System.out.println("Start time: " + MinecraftClient.getInstance().startTime);
     }
 
     // This could be loaded at any time

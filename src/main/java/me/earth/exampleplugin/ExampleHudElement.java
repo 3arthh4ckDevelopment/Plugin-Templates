@@ -8,9 +8,8 @@ import me.earth.earthhack.api.setting.settings.ColorSetting;
 import me.earth.earthhack.api.setting.settings.EnumSetting;
 import me.earth.earthhack.api.setting.settings.NumberSetting;
 import me.earth.earthhack.impl.util.render.Render2DUtil;
-import net.minecraft.client.gui.DrawContext;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 import java.awt.*;
 
@@ -28,9 +27,9 @@ public class ExampleHudElement extends HudElement {
 
     // This method is called every frame
     @Override
-    protected void onRender(DrawContext drawContext) {
+    protected void onRender() {
         // Draw a rectangle on the screen
-        Render2DUtil.drawRect(drawContext.getMatrices(), getX(), getY(), getX() + getWidth(), getY() + getHeight(), color.getValue().getRGB());
+        Render2DUtil.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), color.getValue().getRGB());
 
         // Create an ItemStack based on the boolean setting
         ItemStack itemStack;
@@ -41,17 +40,26 @@ public class ExampleHudElement extends HudElement {
         }
 
         // Draw the item on the screen based on the enum setting
-        float y = switch (mode.getValue()) {
-            case Top -> getY();
-            case Center -> getY() + getHeight() / 2 - 8;
-            case Bottom -> getY() + getHeight() - 16;
-        };
+        float y;
+        switch (mode.getValue()) {
+            case Top:
+                y = getY();
+                break;
+            case Center:
+                y = getY() + getHeight() / 2 - 8;
+                break;
+            case Bottom:
+                y = getY() + getHeight() - 16;
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + mode.getValue());
+        }
 
         // Calculate the x position based on the width of the element, so it's always centered
         float x = (getX() + (getWidth() / 2 - 8));
 
         // Draw the item on the screen
-        Render2DUtil.drawItem(drawContext, itemStack, (int) x, (int) y, true);
+        Render2DUtil.drawItem(itemStack, (int) x, (int) y, true);
     }
 
     // Constructor of the HudElement

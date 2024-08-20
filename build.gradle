@@ -1,34 +1,72 @@
-plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'forge'
+            url = 'https://files.minecraftforge.net/maven'
+        }
+        maven {
+            name = 'SpongePowered'
+            url = 'https://repo.spongepowered.org/maven'
+        }
+        maven {
+            name = 'jitpack.io'
+            url = 'https://jitpack.io'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+    }
 }
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
 
 version = project.plugin_version
 archivesBaseName = project.plugin_name
 
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = '1.12.2-14.23.5.2768'
+    runDir = 'run'
+    mappings = 'stable_39'
+    makeObfSourceJar = false
+}
+
 repositories {
     mavenCentral()
     maven {
-        name = "jitpack.io"
-        url  = "https://jitpack.io"
+        name = 'spongepowered-repo'
+        url = 'https://repo.spongepowered.org/maven/'
+    }
+
+    maven {
+        name = 'jitpack.io'
+        url  = 'https://jitpack.io'
     }
 }
-
-loom { accessWidenerPath = file("src/main/resources/${project.plugin_id}.accesswidener") }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    compileOnly('com.github.3arthh4ckDevelopment:3arthh4ck-Client:dev-SNAPSHOT') {
+        exclude module: 'mixin'
+    }
 
-    compileOnly('com.github.3arthh4ckDevelopment:3arthh4ck-Fabric:main-SNAPSHOT:all')
+    compile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+        exclude module: 'gson'
+        exclude module: 'commons-io'
+    }
 }
 
-processResources {
-    inputs.property "version", project.plugin_version
-
-    filesMatching("fabric.mod.json") {
-        expand "version": project.plugin_version
-    }
+mixin {
+    defaultObfuscationEnv searge
+    add sourceSets.main, "mixins.${project.plugin_id}.refmap.json"
 }
 
 jar {

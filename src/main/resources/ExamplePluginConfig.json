@@ -1,6 +1,5 @@
 {
   "name": "ExamplePlugin",
   "mainClass": "me.earth.exampleplugin.ExamplePlugin",
-  "mixinConfig": "mixins.exampleplugin.json",
-  "accessWidener": "exampleplugin.accesswidener"
+  "mixinConfig": "mixins.exampleplugin.json"
 }

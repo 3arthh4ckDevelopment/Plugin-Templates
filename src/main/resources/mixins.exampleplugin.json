@@ -1,6 +1,7 @@
 {
   "required": true,
-  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.7.11",
+  "compatibilityLevel": "JAVA_8",
   "package": "me.earth.exampleplugin.mixin",
   "refmap": "mixins.exampleplugin.refmap.json",
   "mixins": [
